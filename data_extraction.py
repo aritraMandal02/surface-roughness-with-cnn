@@ -8,6 +8,7 @@ from natsort import index_natsorted
 
 
 roughness_dict = {"sample_name": [], "Ra": [], "Rq": [], "Rz": []}
+
 for name in glob.glob('roughness_values/*.pdf'):
     reader = PdfReader(name)
     text = reader.pages[0].extract_text()
@@ -25,7 +26,6 @@ roughness_df.sort_values(by=['sample_name'],
                          key=lambda x: np.argsort(
                              index_natsorted(roughness_df["sample_name"])),
                          inplace=True)
-roughness_df.head()
 
 roughness_df.to_excel('data/roughness_values_all.xlsx', index=False)
 
