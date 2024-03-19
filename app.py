@@ -39,6 +39,7 @@ def index():
     roughness_value = None
     if form.validate_on_submit():
         image = form.image.data
+        # Should we save the images
         # image.save(os.path.join(
         #     app.config['UPLOAD_FOLDER'], secure_filename(image.filename)))
         image = np.array(Image.open(image))
