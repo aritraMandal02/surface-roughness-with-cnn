@@ -14,7 +14,7 @@
   <body>
     <div class="container mt-3">
       <h1>Predict Surface Roughness</h1>
-      <form class="mx-1" method="POST" action="/">
+      <form class="mx-1" method="POST" action="{{url_for('index')}}" enctype="multipart/form-data">
         {{ form.csrf_token }}
         {% for field in form %}
         {% if field.type in ['FileField', 'StringField'] %}
@@ -33,6 +33,9 @@
         {% endfor %} 
         {{form.submit(class="btn btn-outline-primary")}}
       </form>
+      {% if roughness_value %}
+        <p class="mt-2">Predicted Ra Value: {{roughness_value}}</p>
+      {% endif %}
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
